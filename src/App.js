@@ -5,6 +5,7 @@ import amex from './assets/amex.svg';
 import jcb from './assets/jcb.svg';
 import msc from './assets/msc.svg';
 import up from './assets/up.svg';
+import stripe from './assets/stripe.svg';
 import './index.css'; // 引入整合 CSS
 
 const detectCardType = (number) => {
@@ -110,7 +111,7 @@ export default function App() {
           </div>
         </div>
 
-        <img src="https://stripe.com/img/v3/newsroom/powered-by-stripe.svg" alt="Powered by Stripe" className="stripe-logo" />
+        <img src="return stripe" alt="Powered by Stripe" className="stripe-logo" />
 
         <button className="button" onClick={handleSubmit}>{loading ? '處理中...' : '新增'}</button>
       </div>
