@@ -1,115 +1,100 @@
-/* index.css */
-:root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --swiper-theme-color: #007aff;
-  --swiper-navigation-size: 44px;
-  --fc-widget-bottom: 15px;
-  --fc-widget-display: none;
-  --window-inner-height: 599px;
-  --tw-border-spacing-x: 0;
-  --tw-border-spacing-y: 0;
-  --tw-translate-x: 0;
-  --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
-  --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  --tw-pan-x: initial;
-  --tw-pan-y: initial;
-  --tw-pinch-zoom: initial;
-  --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position: initial;
-  --tw-gradient-via-position: initial;
-  --tw-gradient-to-position: initial;
-  --tw-ordinal: initial;
-  --tw-slashed-zero: initial;
-  --tw-numeric-figure: initial;
-  --tw-numeric-spacing: initial;
-  --tw-numeric-fraction: initial;
-  --tw-ring-inset: initial;
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgba(59, 130, 246, 0.5);
-  --tw-ring-offset-shadow: 0 0 transparent;
-  --tw-ring-shadow: 0 0 transparent;
-  --tw-shadow: 0 0 transparent;
-  --tw-shadow-colored: 0 0 transparent;
-  --tw-blur: initial;
-  --tw-brightness: initial;
-  --tw-contrast: initial;
-  --tw-grayscale: initial;
-  --tw-hue-rotate: initial;
-  --tw-invert: initial;
-  --tw-saturate: initial;
-  --tw-sepia: initial;
-  --tw-drop-shadow: initial;
-  --tw-backdrop-blur: initial;
-  --tw-backdrop-brightness: initial;
-  --tw-backdrop-contrast: initial;
-  --tw-backdrop-grayscale: initial;
-  --tw-backdrop-hue-rotate: initial;
-  --tw-backdrop-invert: initial;
-  --tw-backdrop-opacity: initial;
-  --tw-backdrop-saturate: initial;
-  --tw-backdrop-sepia: initial;
-  --tw-contain-size: initial;
-  --tw-contain-layout: initial;
-  --tw-contain-paint: initial;
-  --tw-contain-style: initial;
-}
 
-html, body {
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: left;
-  color: #4a4a4a;
-  font-family: IBM Plex Sans, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+/* index.css */
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: #fff;
   margin: 0;
   padding: 0;
-  text-rendering: optimizeLegibility;
-  transition: opacity 0.15s linear;
-  height: 100%;
-  left: 0;
-  outline: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1050;
-  overflow-x: hidden;
-  overflow-y: auto;
+  color: #4a4a4a;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 430px;
+  margin: 40px auto;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.input {
   display: block;
-  padding-left: 15px;
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #f7f7f7;
+}
+
+.card-icons {
+  display: flex;
+  gap: 8px;
+  padding-left: 4px;
+  margin-bottom: 12px;
+}
+
+.card-icons img {
+  height: 24px;
+  width: auto;
+  background: #fff;
+  padding: 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #000;
+}
+
+.info {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.info a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.powered {
+  margin-top: 12px;
+  height: 20px;
+}
+
+button.submit {
+  width: 100%;
+  margin-top: 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
 }
