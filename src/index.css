@@ -98,3 +98,40 @@ button.submit {
   font-size: 14px;
   cursor: pointer;
 }
+.stripe-logo-wrapper {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 0 0 1px #d1d5db;
+  width: fit-content;
+}
+
+.stripe-logo-wrapper img {
+  height: 18px;
+  display: block;
+}
+.button {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #4a4a4a;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #2f2f2f;
+}
+
+.button:disabled {
+  background-color: #a1a1a1;
+  cursor: not-allowed;
+}
+
