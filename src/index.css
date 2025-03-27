@@ -1,4 +1,44 @@
+body {
+  margin: 0 auto;
+  max-width: 480px;
+  min-height: 100vh;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: #f9f9f9;
+  color: #4a4a4a;
+}
 
+.checkout-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.checkout-modal {
+  width: 100%;
+  max-width: 100%;
+}
+
+.checkout-container {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+}
+
+/* 保持響應式 - 手機小螢幕優化 */
+@media (max-width: 400px) {
+  .checkout-container {
+    padding: 24px 16px;
+  }
+
+  .input, .button {
+    font-size: 13px;
+  }
+}
 body {
   margin: 0;
   font-family: 'IBM Plex Sans', sans-serif;
