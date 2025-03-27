@@ -1,3 +1,4 @@
+// 完整還原 Stripe-like 結帳 UI
 import React, { useState } from 'react';
 
 export default function App() {
@@ -40,9 +41,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f6f9fc] flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-sm font-sans">
-        <h2 className="text-lg font-semibold mb-6">Enter payment details</h2>
+    <div className="min-h-screen bg-[#f6f9fc] flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-white rounded-lg shadow border border-gray-200 p-8 font-sans text-sm">
+        <h2 className="text-[15px] font-medium mb-6">Enter payment details</h2>
 
         <input
           type="email"
@@ -53,7 +54,7 @@ export default function App() {
           className="mb-4 w-full border border-gray-300 rounded px-3 py-[10px]"
         />
 
-        <div className="mb-2 text-xs text-gray-600 font-medium">Card information</div>
+        <label className="block text-xs text-gray-600 font-medium mb-1">Card information</label>
         <input
           type="text"
           name="card"
@@ -109,18 +110,20 @@ export default function App() {
             onChange={handleChange}
             className="mt-1 mr-2"
           />
-          <label className="text-sm leading-tight">Save my info for secure 1-click checkout<br/><span className="text-xs text-gray-500">Pay faster on TestPay and thousands of sites.</span></label>
+          <label className="text-sm leading-tight">Save my info for secure 1-click checkout<br/>
+            <span className="text-xs text-gray-500">Pay faster on TestPay and thousands of sites.</span>
+          </label>
         </div>
 
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="w-full bg-[#0070f3] hover:bg-[#005dd1] text-white text-sm py-3 rounded font-semibold"
+          className="w-full bg-[#0070f3] hover:bg-[#005dd1] text-white text-sm py-[10px] rounded font-semibold"
         >
           {loading ? '處理中...' : 'Subscribe'}
         </button>
 
-        <p className="text-[11px] text-gray-500 leading-relaxed mt-4">
+        <p className="text-[11px] text-gray-500 mt-4 leading-normal">
           After your trial ends, you will be charged ¥108 per month starting September 8, 2022. You can always cancel before then.
         </p>
       </div>
