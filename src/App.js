@@ -1,3 +1,4 @@
+// Stripe-like Checkout + 多語言 + 自動格式驗證 + 幣別與 RTL + 韓國支援 + CSS 調整樣式
 import React, { useState } from 'react';
 import visa from './assets/visa.svg';
 import amex from './assets/amex.svg';
@@ -42,7 +43,7 @@ const i18n = {
 };
 
 export default function App() {
-  const [lang] = useState('ko'); // 更改語系：zh / en / ko
+  const [lang] = useState('ko');
   const [loading, setLoading] = useState(false);
   const [cardType, setCardType] = useState(null);
   const [error, setError] = useState(null);
@@ -93,36 +94,37 @@ export default function App() {
   const isRTL = lang === 'ar' || lang === 'he';
 
   return (
-    <div className={`min-h-screen bg-[#f6f9fc] flex items-center justify-center p-6 ${isRTL ? 'direction-rtl text-right' : ''}`}>
-      <div className="w-full max-w-md bg-white rounded-lg shadow border border-gray-200 p-8 font-sans text-sm">
-        <input type="email" name="email" placeholder={i18n[lang].email} value={formData.email} onChange={handleChange} className="mb-4 w-full border border-gray-300 rounded px-3 py-[10px]" />
-        <label className="block text-xs text-gray-600 font-medium mb-1">{i18n[lang].card}</label>
-        <div className="relative mb-2">
-          <input type="text" name="card" placeholder="1234 1234 1234 1234" value={formData.card} onChange={handleChange} maxLength={19} className="w-full border border-gray-300 rounded px-3 py-[10px] pr-20 tracking-widest" inputMode="numeric" />
-          {cardType && <img src={cardType} alt="card logo" className="absolute right-3 top-1/2 -translate-y-1/2 h-5" />}
+    <div className={`min-h-screen bg-[#f6f9fc] flex items-center justify-center px-4 py-12 ${isRTL ? 'direction-rtl text-right' : ''}`}>
+      <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl border border-gray-200 p-10 font-sans text-base space-y-4">
+        <input type="email" name="email" placeholder={i18n[lang].email} value={formData.email} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-3" />
+
+        <label className="block text-xs text-gray-600 font-semibold mt-2">{i18n[lang].card}</label>
+        <div className="relative">
+          <input type="text" name="card" placeholder="1234 1234 1234 1234" value={formData.card} onChange={handleChange} maxLength={19} className="w-full border border-gray-300 rounded-lg px-4 py-3 pr-20 tracking-widest" inputMode="numeric" />
+          {cardType && <img src={cardType} alt="card logo" className="absolute right-3 top-1/2 -translate-y-1/2 h-6" />}
         </div>
-        {error && <p className="text-red-500 text-xs mb-2">{error}</p>}
+        {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
-        <div className="flex gap-2 mb-4">
-          <input type="text" name="expiry" placeholder={i18n[lang].expiry} value={formData.expiry} onChange={handleChange} maxLength={7} className="w-1/2 border border-gray-300 rounded px-3 py-[10px]" />
-          <input type="text" name="cvc" placeholder={i18n[lang].cvc} value={formData.cvc} onChange={handleChange} maxLength={4} className="w-1/2 border border-gray-300 rounded px-3 py-[10px]" />
+        <div className="flex gap-4">
+          <input type="text" name="expiry" placeholder={i18n[lang].expiry} value={formData.expiry} onChange={handleChange} maxLength={7} className="w-1/2 border border-gray-300 rounded-lg px-4 py-3" />
+          <input type="text" name="cvc" placeholder={i18n[lang].cvc} value={formData.cvc} onChange={handleChange} maxLength={4} className="w-1/2 border border-gray-300 rounded-lg px-4 py-3" />
         </div>
 
-        <input type="text" name="name" placeholder={i18n[lang].name} value={formData.name} onChange={handleChange} className="mb-4 w-full border border-gray-300 rounded px-3 py-[10px]" />
+        <input type="text" name="name" placeholder={i18n[lang].name} value={formData.name} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-3" />
 
-        <select name="country" value={formData.country} onChange={handleChange} className="w-full border border-gray-300 rounded px-3 py-[10px] mb-4">
+        <select name="country" value={formData.country} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-3">
           <option value="Korea">Korea</option>
           <option value="Taiwan">Taiwan</option>
           <option value="Japan">Japan</option>
           <option value="USA">USA</option>
         </select>
 
-        <div className="flex items-start mb-4">
-          <input type="checkbox" name="saveInfo" checked={formData.saveInfo} onChange={handleChange} className="mt-1 mr-2" />
-          <label className="text-sm leading-tight">{i18n[lang].saved}</label>
+        <div className="flex items-center gap-2">
+          <input type="checkbox" name="saveInfo" checked={formData.saveInfo} onChange={handleChange} className="h-4 w-4" />
+          <label className="text-sm font-medium">{i18n[lang].saved}</label>
         </div>
 
-        <button onClick={handleSubmit} disabled={loading} className="w-full bg-[#0070f3] hover:bg-[#005dd1] text-white text-sm py-[10px] rounded font-semibold">
+        <button onClick={handleSubmit} disabled={loading} className="w-full bg-[#0070f3] hover:bg-[#005dd1] text-white text-base py-3 rounded-lg font-semibold">
           {loading ? '처리 중...' : i18n[lang].submit} {i18n[lang].currency}108
         </button>
       </div>
