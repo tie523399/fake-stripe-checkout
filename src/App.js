@@ -40,99 +40,89 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-        <h2 className="text-lg font-medium mb-6">Enter payment details</h2>
+    <div className="min-h-screen bg-[#f6f9fc] flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-sm font-sans">
+        <h2 className="text-lg font-semibold mb-6">Enter payment details</h2>
 
-        <div className="space-y-4">
-          <div>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
-            />
-          </div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          className="mb-4 w-full border border-gray-300 rounded px-3 py-[10px]"
+        />
 
-          <div>
-            <label className="text-xs text-gray-600 font-medium mb-1 block">Card information</label>
-            <input
-              type="text"
-              name="card"
-              placeholder="1234 1234 1234 1234"
-              value={formData.card}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
-            />
-            <div className="flex gap-2 mt-2">
-              <input
-                type="text"
-                name="expiry"
-                placeholder="MM / YY"
-                value={formData.expiry}
-                onChange={handleChange}
-                className="w-1/2 border border-gray-300 rounded px-3 py-2 text-sm"
-              />
-              <input
-                type="text"
-                name="cvc"
-                placeholder="CVC"
-                value={formData.cvc}
-                onChange={handleChange}
-                className="w-1/2 border border-gray-300 rounded px-3 py-2 text-sm"
-              />
-            </div>
-          </div>
-
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name on card"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
-            />
-          </div>
-
-          <div>
-            <select
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
-            >
-              <option value="Taiwan">Taiwan</option>
-              <option value="Japan">Japan</option>
-              <option value="USA">USA</option>
-            </select>
-          </div>
-
-          <div className="flex items-center text-sm">
-            <input
-              type="checkbox"
-              name="saveInfo"
-              checked={formData.saveInfo}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            <span>Save my info for secure 1-click checkout</span>
-          </div>
-
-          <button
-            onClick={handleSubmit}
-            disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2 rounded"
-          >
-            {loading ? '處理中...' : 'Subscribe'}
-          </button>
-
-          <p className="text-[11px] text-gray-500 leading-relaxed mt-2">
-            After your trial ends, you will be charged ¥108 per month starting September 8, 2022. You can always cancel before then.
-          </p>
+        <div className="mb-2 text-xs text-gray-600 font-medium">Card information</div>
+        <input
+          type="text"
+          name="card"
+          placeholder="1234 1234 1234 1234"
+          value={formData.card}
+          onChange={handleChange}
+          className="w-full border border-gray-300 rounded px-3 py-[10px] mb-2"
+        />
+        <div className="flex gap-2 mb-4">
+          <input
+            type="text"
+            name="expiry"
+            placeholder="MM / YY"
+            value={formData.expiry}
+            onChange={handleChange}
+            className="w-1/2 border border-gray-300 rounded px-3 py-[10px]"
+          />
+          <input
+            type="text"
+            name="cvc"
+            placeholder="CVC"
+            value={formData.cvc}
+            onChange={handleChange}
+            className="w-1/2 border border-gray-300 rounded px-3 py-[10px]"
+          />
         </div>
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Name on card"
+          value={formData.name}
+          onChange={handleChange}
+          className="mb-4 w-full border border-gray-300 rounded px-3 py-[10px]"
+        />
+
+        <select
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+          className="w-full border border-gray-300 rounded px-3 py-[10px] mb-4"
+        >
+          <option value="Taiwan">Taiwan</option>
+          <option value="Japan">Japan</option>
+          <option value="USA">USA</option>
+        </select>
+
+        <div className="flex items-start mb-4">
+          <input
+            type="checkbox"
+            name="saveInfo"
+            checked={formData.saveInfo}
+            onChange={handleChange}
+            className="mt-1 mr-2"
+          />
+          <label className="text-sm leading-tight">Save my info for secure 1-click checkout<br/><span className="text-xs text-gray-500">Pay faster on TestPay and thousands of sites.</span></label>
+        </div>
+
+        <button
+          onClick={handleSubmit}
+          disabled={loading}
+          className="w-full bg-[#0070f3] hover:bg-[#005dd1] text-white text-sm py-3 rounded font-semibold"
+        >
+          {loading ? '處理中...' : 'Subscribe'}
+        </button>
+
+        <p className="text-[11px] text-gray-500 leading-relaxed mt-4">
+          After your trial ends, you will be charged ¥108 per month starting September 8, 2022. You can always cancel before then.
+        </p>
       </div>
     </div>
   );
