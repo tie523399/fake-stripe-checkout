@@ -150,3 +150,18 @@ body {
 .button:hover {
   background-color: black;
 }
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f7f7f7; /* 淺灰背景 */
+}
+
+.input:focus {
+  border-color: #999;
+  background-color: #fff; /* 聚焦時變白，符合 UI UX */
+}
+
