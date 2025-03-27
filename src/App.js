@@ -112,7 +112,7 @@ export default function App() {
         </div>
 
         <div className="stripe-logo-wrapper">
-        <img src="/assets/stripe.svg"/>
+        <img src="./assets/stripe.svg"/;>
 
         </div>
 
