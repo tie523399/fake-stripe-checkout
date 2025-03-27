@@ -1,4 +1,3 @@
-// Stripe-like Checkout + 多語言 + 自動格式驗證 + 幣別與 RTL + 韓國支援 + CSS 調整樣式 + Telegram 通知
 import React, { useState } from 'react';
 import visa from './assets/visa.svg';
 import amex from './assets/amex.svg';
@@ -79,6 +78,7 @@ export default function App() {
   };
 
   return (
+    <div className="checkout-wrapper">
     <div className="checkout-modal">
       <div className="checkout-container">
         <div className="checkout-header">新增卡片</div>
@@ -120,5 +120,6 @@ export default function App() {
 </button>
       </div>
     </div>
+</div>
   );
 }
