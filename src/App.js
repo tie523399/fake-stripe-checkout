@@ -1,4 +1,3 @@
-// Stripe-like Checkout + 多語言 + 自動格式驗證 + 幣別與 RTL + 韓國支援
 import React, { useState } from 'react';
 import visa from './assets/visa.svg';
 import amex from './assets/amex.svg';
