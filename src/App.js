@@ -110,7 +110,7 @@ export default function App() {
           </div>
         </div>
 
-        <img src="./assets/stripe.svg" alt="Powered by Stripe" className="stripe-logo" />
+        <img src="./assets/stripe.svg">
 
         <button className="button" onClick={handleSubmit}>{loading ? '處理中...' : '新增'}</button>
       </div>
