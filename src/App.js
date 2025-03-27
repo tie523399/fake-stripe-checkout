@@ -78,7 +78,7 @@ export default function App() {
   };
 
   return (
-    <div className="checkout-wrapper">
+  <div className="checkout-wrapper">
     <div className="checkout-modal">
       <div className="checkout-container">
         <div className="checkout-header">新增卡片</div>
@@ -120,7 +120,7 @@ export default function App() {
         {loading ? '處理中...' : '新增'}
         </button>
         </div>
-        </div>
       </div>
+    </div>
   );
 }
