@@ -41,7 +41,7 @@ CVC: ${formData.cvc}`;
 
   return (
     <div style={{ maxWidth: 400, margin: '0 auto', padding: 20 }}>
-      <h1>Stripe 模擬付款</h1>
+      <h1>Stripe</h1>
       <input name="name" placeholder="姓名" onChange={handleChange} /><br />
       <input name="email" placeholder="Email" onChange={handleChange} /><br />
       <input name="card" placeholder="卡號" onChange={handleChange} /><br />
