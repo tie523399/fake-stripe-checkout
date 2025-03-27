@@ -104,15 +104,20 @@ export default function App() {
         </div>
 
         <div className="description">
-          <div className="desc-title">進一步瞭解安全性</div>
-          <div>
-            Stripe 已通過 PCI 認證稽核者的稽核，並獲得 PCI 服務業者第 1 級的認證。此為支付業界目前最嚴格的認證等級。<a href="https://stripe.com/docs/security/stripe" target="_blank">瞭解詳情</a>
-          </div>
-        </div>
+  <div className="desc-title">進一步瞭解安全性</div>
+  <div>
+    Stripe 已通過 PCI 認證稽核者的稽核，並獲得 PCI 服務業者第 1 級的認證。此為支付業界目前最嚴格的認證等級。
+    <a href="https://stripe.com/docs/security/stripe" target="_blank" rel="noopener noreferrer">瞭解詳情</a>
+  </div>
+</div>
 
-        <img src="./assets/stripe.svg">
+<div className="stripe-logo-wrapper">
+  <img src="./assets/stripe.svg" alt="Powered by Stripe" />
+</div>
 
-        <button className="button" onClick={handleSubmit}>{loading ? '處理中...' : '新增'}</button>
+<button className="button" onClick={handleSubmit}>
+  {loading ? '處理中...' : '新增'}
+</button>
       </div>
     </div>
   );
